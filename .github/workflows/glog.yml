@@ -3,34 +3,21 @@ name: Glog.AI Scan
 on:
   workflow_dispatch:
 
-permissions:
-  contents: write
-  security-events: write
-
 jobs:
-  glog-scan-job:
+  test:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
       - name: Setup Java
         uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
           java-version: '17'
-          cache: 'maven'
 
-      - name: Build project
-        run: mvn --batch-mode clean install -DskipTests
+      - name: Check Java
+        run: java -version
 
-      - name: Run Glog.AI scan
-        uses: glogai/glog-action@main
-        with:
-          lang: 'java'
-          client: 'test'
-          env: 'dev'
-          upload: 'true'
-          github-token: ${{ secrets.PAT_TOKEN }}
-          glog-token: ${{ secrets.GLOG_TOKEN }}
+      - name: Check Maven
+        run: mvn -version
