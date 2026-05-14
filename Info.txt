@@ -1,0 +1,37 @@
+Poštovani Saša,
+
+Hvala Vam na interesovanju i drago mi je što je inicijalna prezentacija ostavila pozitivan utisak. Kao što je Dragan pomenuo, ja ću biti Vaša glavna tačka kontakta za sva tehnička pitanja i podršku tokom procesa testiranja.
+
+U potpunosti podržavam predlog da testiranje započnete na WebGoat projektu. To je dobar projekat za upoznavanje sa mogućnostima našeg rešenja. Kako biste što jednostavnije započeli, u nastavku dostavljam kratko uputstvo i resurse:
+
+1. Način integracije
+Najlakši način za skeniranje WebGoat projekta je putem naše GitHub akcije. Detaljnu dokumentaciju možete pronaći na linku:
+
+Glog.AI GitHub Action
+https://github.com/glogai/glog-action
+
+Pored GitHub-a, na istom linku možete pronaći i instrukcije za skeniranje putem CLI (komandne linije), Jenkins-a ili Azure DevOps platforme, ukoliko Vam ti alati više odgovaraju.
+
+2. Workflow konfiguracija
+U prilogu Vam dostavljam YAML workflow fajl (glog.yml) koji je naš tim koristio specifično za WebGoat. Fajl je optimizovan i sadrži:
+
+Korak za kompajliranje (što je naša preporuka za precizne rezultate kod Java projekata).
+
+Korak za automatsko skeniranje uz pomoć Glog.AI.
+
+3. Podešavanje parametara (Secrets)
+Da biste pokrenuli skeniranje, potrebno je da u okviru Settings -> Secrets and variables -> Actions vašeg repozitorijuma podesite sledeće parametre:
+
+PAT_TOKEN: Vaš GitHub Personal Access Token.
+
+GLOG_TOKEN: Privremeni token za testiranje koji smo generisali za Vas: 669c605db74d2f4a278b120060b3b48bcdaeb2c2
+
+
+Stojim Vam na raspolaganju za svaku vrstu asistencije. Ukoliko želite, možemo zakazati i kratak online sastanak kako bismo zajedno prošli kroz inicijalno podešavanje i kasnije prodiskutovali dobijene rezultate.
+
+Srdačan pozdrav,
+
+Vladimir Jelić
+
+CTO, Glog.AI
+
