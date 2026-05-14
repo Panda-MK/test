@@ -1,6 +1,6 @@
 name: Glog.AI Scan
 
-on: 
+on:
   workflow_dispatch:
 
 permissions:
@@ -12,30 +12,23 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-      - uses: actions/setup-java@v4
+      - name: Setup Java
+        uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
-          java-version: '25'
+          java-version: '17'
           cache: 'maven'
 
-      - name: Compile project
+      - name: Build project
         run: mvn --batch-mode clean install -DskipTests
 
-      - name: Checkout glog-action repository
-        uses: actions/checkout@v4
-        with:
-          repository: glogai/glog-action
-          token: ${{ secrets.PAT_TOKEN }}
-          path: .github/glog-action
-          ref: main
-
-      - name: Run Glog.AI from private repo
-        uses: ./.github/glog-action
+      - name: Run Glog.AI scan
+        uses: glogai/glog-action@main
         with:
           lang: 'java'
-          debug: 'false'
           client: 'test'
           env: 'dev'
           upload: 'true'
